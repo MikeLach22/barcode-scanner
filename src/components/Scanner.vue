@@ -7,7 +7,7 @@ export default {
     },
     data() {
         return {
-            code: 'code'
+            code: '???'
         };
     },
     methods: { 
@@ -22,5 +22,5 @@ export default {
 <template>
     <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
 
-    <p>{{ code }}</p>
+    <p>Barcode: {{ code }}</p>
 </template>
