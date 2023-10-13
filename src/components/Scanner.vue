@@ -7,11 +7,13 @@ export default {
     },
     data() {
         return {
+            code: 'code'
         };
     },
     methods: { 
         onDecode(result) { 
             console.log(result)
+            this.code=result
         }    
     },
 };
@@ -19,4 +21,6 @@ export default {
 </script>
 <template>
     <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+
+    <p>{{ code }}</p>
 </template>
