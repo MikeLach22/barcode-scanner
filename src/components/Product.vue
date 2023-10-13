@@ -3,17 +3,15 @@
     <div>
         <h1>{{ message }}</h1>
         <img src="'/images/'+'objectName+/.jpeg" alt="objectName">
+        <p>Beschreibung</p>
+        <p>Nummer</p>
     </div>
   </template>
   
   <script>
   export default {
     // JavaScript-Code für die Komponente
-    props: {
-            objectName: String,
-            description: String,
-            barCodeNumber: Number,
-        },
+   
     data() {
         return{
             objectName:"",
@@ -22,9 +20,7 @@
         };
     },
     methods: {
-      changeMessage() {
-        this.message = 'Nach Klick geändert!';
-      }
+      
     }
   };
   </script>
