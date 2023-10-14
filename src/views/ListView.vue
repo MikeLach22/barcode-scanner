@@ -1,9 +1,15 @@
-<script setup>
-//import List from '../components/List.vue'
+<script>
+import List from '../components/List.vue'
+
+export default{
+  components: {
+    List
+  }
+}
 </script>
 
 <template>
   <main>
-    <!--<List />-->
+    <List></List>
   </main>
 </template>

@@ -1,28 +1,14 @@
 <template>
-    <!-- HTML-Template für die Komponente -->
     <div>
-        <h1>{{ message }}</h1>
-        <img src="'/images/'+'objectName+/.jpeg" alt="objectName">
-        <p>Beschreibung</p>
-        <p>Nummer</p>
+      <h1>{{ productObject.name }}</h1>
+      <h2>{{ productObject.code }}</h2>
     </div>
   </template>
   
   <script>
-  export default {
-    // JavaScript-Code für die Komponente
-   
-    data() {
-        return{
-            objectName:"",
-            description: "",
-            barCodeNumber: 0,
-        };
-    },
-    methods: {
-      
-    }
-  };
+    export default {
+        props: ["productObject"],
+    };
   </script>
   
   <style>

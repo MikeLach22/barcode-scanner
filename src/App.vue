@@ -4,7 +4,12 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <h1>The Barcode Scanner</h1>
+    <v-toolbar>
+      <v-toolbar-title>Scanner</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn text to="/">Scanner</v-btn>
+      <v-btn text to="/list">Scanned</v-btn>
+    </v-toolbar>
 
     <div>
       <nav>
