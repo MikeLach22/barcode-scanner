@@ -4,6 +4,7 @@
 
 <script>
     import Product from "./Product.vue"
+    import axios from 'axios'
 
     export default{
         data() {
@@ -15,10 +16,10 @@
             Product
         },
         mounted(){
-            /*axios.get("").then(response => {
-                this.scannedProducts=response.data
-            })*/
-            this.scannedProducts.push({name: "Wasser", code:"4009228120077"}, {name:"Probiotika", code: "4260518460314"})
+            axios.get('http://localhost:3000/ProductList/',{
+            }).then(response => {
+                this.scannedProducts=response.data  
+            })
         }
 
     }
