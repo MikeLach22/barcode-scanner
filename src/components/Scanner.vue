@@ -11,8 +11,9 @@ export default {
     data() {
         return {
             scanbool: false,
-            productObject: {id:0,name:"",description:"",img:""},
-            scannerWork: true
+            productObject: {id:"",name:"",description:"",img:""},
+            scannerWork: true,
+            fail: false
         };
     },
     methods: { 
@@ -25,12 +26,17 @@ export default {
             }).then(resp => {
                 console.log(resp.data);
                 this.productObject=resp.data;
+            }).catch(err => {
+                console.log(err);
+                this.fail = true;
             });
             this.scanbool=true;
+
         },
         rescan(){
             this.scanbool=false
             this.productObject={name: "", code:""}
+            this.scanbool=false;
         }  
     },
 };
@@ -46,7 +52,9 @@ export default {
     <div v-if="scanbool">
         <Product :productObject="productObject"></Product>
         <v-btn @click="rescan">Scan new item</v-btn>
+        
     </div>
+
 </template>
 
 <style>
