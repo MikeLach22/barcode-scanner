@@ -1,32 +1,33 @@
-<template>
-    <li v-for="item in scannedProducts" id="product"><Product :productObject="item"></Product></li>
-</template>
-
 <script>
-    import Product from "./Product.vue"
-    import axios from 'axios'
+import Product from "./Product.vue"
+import axios from 'axios'
 
-    export default{
-        data() {
-            return{
-                scannedProducts: []
-            }
-        },
-        components: {
-            Product
-        },
-        mounted(){
-            axios.get('http://localhost:3000/ProductList/',{
-            }).then(response => {
-                this.scannedProducts=response.data  
-            })
+export default {
+    data() {
+        return {
+            scannedProducts: []
         }
-
+    },
+    components: {
+        Product
+    },
+    mounted() {
+        axios.get('http://localhost:3000/ProductList/', {
+        }).then(response => {
+            this.scannedProducts = response.data
+        })
     }
+}
 </script>
 
+<template>
+    <li v-for="item in scannedProducts" id="product">
+        <Product :productObject="item"></Product>
+    </li>
+</template>
+
 <style>
-#product{
+#product {
     list-style-type: none;
 }
 </style>

@@ -14,11 +14,4 @@ import { RouterLink, RouterView } from 'vue-router'
   <div id="routerView">
     <RouterView />
   </div>
-  
 </template>
-
-<style>
-#routerView{
-
-}
-</style>

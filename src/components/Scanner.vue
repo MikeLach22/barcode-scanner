@@ -10,65 +10,58 @@ export default {
     },
     data() {
         return {
-            scanbool: false,
-            productObject: {id:"",name:"",description:"",img:""},
-            scannerWork: true,
-            fail: false
+            scanDeteced: false,
+            productObject: { id: "", name: "", description: "", img: "" },
+            failedScan: false
         };
     },
-    methods: { 
-        onDecode(result) { 
-            console.log(result)
-            axios.get('http://localhost:3000/Product/',{
-                params:{
-                    Prodid: result,
-            }
+    methods: {
+        onDecode(result) {
+            axios.get('http://localhost:3000/Product', {
+                params: {
+                    prodId: result,
+                }
             }).then(resp => {
-                console.log(resp.data);
-                this.productObject=resp.data;
+                this.productObject = resp.data;
             }).catch(err => {
-                console.log(err);
-                this.fail = true;
+                this.failedScan = true;
             });
-            this.scanbool=true;
+            this.scanDeteced = true;
 
         },
-        rescan(){
-            this.scanbool=false
-            this.productObject={name: "", code:""}
-            this.scanbool=false;
-        }  
+        rescan() {
+            this.scanDeteced = false;
+            this.productObject = { id: "", name: "", description: "", img: "" };
+            this.failedScan = false;
+        }
     },
 };
-
 </script>
+
 <template>
-    
-    <div v-if="!scanbool" id="scanner">
+    <div v-if="!scanDeteced" id="scanner">
         <v-card variant="outlined">
             <StreamBarcodeReader @decode="onDecode"></StreamBarcodeReader>
         </v-card>
     </div>
-    <div v-if="scanbool">
+    <div v-if="scanDeteced">
         <Product :productObject="productObject"></Product>
         <div>
             <v-btn @click="rescan">Scan new item</v-btn>
-            <v-chip v-if="!fail" id="recognized">Scan recognized</v-chip>
-            <v-chip v-if="fail" id="notRecognized">Scan not recognized</v-chip>
+            <v-chip v-if="!failedScan" id="recognized">Scan recognized</v-chip>
+            <v-chip v-if="failedScan" id="notRecognized">Scan not recognized</v-chip>
         </div>
-        
-        
     </div>
-
 </template>
 
 <style>
-    #recognized{
-        margin-left: 3%;
-        color: green;
-    }
-    #notRecognized{
-        margin-left: 3%;
-        color: red;
-    }
+#recognized {
+    margin-left: 3%;
+    color: green;
+}
+
+#notRecognized {
+    margin-left: 3%;
+    color: red;
+}
 </style>
