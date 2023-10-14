@@ -10,14 +10,15 @@ import { RouterLink, RouterView } from 'vue-router'
       <v-btn text to="/">Scanner</v-btn>
       <v-btn text to="/list">Scanned</v-btn>
     </v-toolbar>
-
-    <div>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/list">List</RouterLink>
-      </nav>
-    </div>
   </header>
-
-  <RouterView />
+  <div id="routerView">
+    <RouterView />
+  </div>
+  
 </template>
+
+<style>
+#routerView{
+
+}
+</style>

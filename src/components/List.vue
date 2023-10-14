@@ -1,5 +1,5 @@
 <template>
-    <li v-for="item in scannedProducts"><Product :productObject="item"></Product></li>
+    <li v-for="item in scannedProducts" id="product"><Product :productObject="item"></Product></li>
 </template>
 
 <script>
@@ -23,3 +23,9 @@
 
     }
 </script>
+
+<style>
+#product{
+    list-style-type: none;
+}
+</style>
