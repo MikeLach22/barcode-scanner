@@ -51,12 +51,24 @@ export default {
     </div>
     <div v-if="scanbool">
         <Product :productObject="productObject"></Product>
-        <v-btn @click="rescan">Scan new item</v-btn>
+        <div>
+            <v-btn @click="rescan">Scan new item</v-btn>
+            <v-chip v-if="!fail" id="recognized">Scan recognized</v-chip>
+            <v-chip v-if="fail" id="notRecognized">Scan not recognized</v-chip>
+        </div>
+        
         
     </div>
 
 </template>
 
 <style>
-    
+    #recognized{
+        margin-left: 3%;
+        color: green;
+    }
+    #notRecognized{
+        margin-left: 3%;
+        color: red;
+    }
 </style>
